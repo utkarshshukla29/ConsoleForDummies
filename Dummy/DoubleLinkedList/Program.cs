@@ -56,7 +56,7 @@ namespace Dummy.DoubleLinkedList
             CustomList<Person> list = new CustomList<Person>(new Person(1));
             list.AddNode(new Person(6));
             list.AddNode(new Person(7));      
-          //  list.AddAtStart(new Person(8));  
+            list.AddAtStart(new Person(8));  
             list.Display();
         }
     }

@@ -17,20 +17,24 @@ namespace Dummy.DoubleLinkedList
             }
         }
 
+        private void CreateNewNode(T item)
+        {
+             Node<T> temp = new Node<T>(item);
+             startNode = temp;
+             endNode = temp;
+        }
+
         public CustomList(T item)
         {
-            Node<T> temp = new Node<T>(item);
+            CreateNewNode(item);
             _count = 1;
-            startNode = temp;
-            endNode = temp;
         }
 
         public void AddNode(T item)
         {
             if (startNode == null)
             {
-                startNode = new Node<T>(item);
-                endNode = startNode;
+                CreateNewNode(item);
                 _count++;
                 return;
             }
@@ -39,10 +43,9 @@ namespace Dummy.DoubleLinkedList
             {
                 temp = temp.Start;
             }
-            temp.Start = new Node<T>(item);
-            temp.Start.End = temp;
-            endNode = temp.Start;
-            endNode.Start = temp;
+            Node<T> newNode = new Node<T>(item);
+            temp.Start = newNode;
+            newNode.End = temp;
             _count++;
         }
 
@@ -50,7 +53,7 @@ namespace Dummy.DoubleLinkedList
         {
             if (startNode == null)
             {
-                startNode = new Node<T>(item);
+                CreateNewNode(item);
             }
             else
             {
@@ -120,7 +123,7 @@ namespace Dummy.DoubleLinkedList
 
             while (temp?.Start != null)
             {
-                System.Console.WriteLine($"{temp.Item?.ToString()} ==> ");
+                System.Console.Write($"{temp.Item?.ToString()} ==> ");
                 temp = temp.Start;
             }
             System.Console.WriteLine(temp?.Item?.ToString());
