@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-namespace Dummy.DoubleLinkedList
+﻿namespace Dummy.DoubleLinkedList
 {
     public class PersonComparer : IComparer<Person>
     {
@@ -15,21 +14,13 @@ namespace Dummy.DoubleLinkedList
     }
     public class Person : IDisposable
     {
-       // public string Name { get; set; }
 
         public int Id { get; set; }
 
         public Person()
         {
-        //    Name = string.Empty;
             Id = 0;
-        }
-
-        // public Person(string name, int id)
-        // {
-        //     Name = name;
-        //     Id = id;
-        // }
+        }       
 
         public Person(int id)
         {
@@ -47,7 +38,7 @@ namespace Dummy.DoubleLinkedList
             GC.Collect();
         }
 
-        
+
     }
     public class Program
     {
@@ -55,8 +46,26 @@ namespace Dummy.DoubleLinkedList
         {
             CustomList<Person> list = new CustomList<Person>(new Person(1));
             list.AddNode(new Person(6));
-            list.AddNode(new Person(7));      
-            list.AddAtStart(new Person(8));  
+            list.AddNode(new Person(7));
+            list.AddAtStart(new Person(8));
+            list.AddAtStart(new Person(18));
+            list.AddAtStart(new Person(28));
+            System.Console.WriteLine($"Current Count : {list.Count}");
+            list.Display();
+            list.DisplayFromEnd();
+            list.RemoveNode();
+            System.Console.WriteLine($"Current Count : {list.Count}");
+            list.Display();
+            list.DisplayFromEnd();
+            list.RemoveNodeFromStart();            
+            System.Console.WriteLine($"Current Count : {list.Count}");
+            list.Display();
+            list.DisplayFromEnd();
+            list.RemoveSpecificNode(new Person(8), new PersonComparer().Compare);
+            list.Display();
+            list.RemoveSpecificNode(new Person(18), new PersonComparer().Compare);
+            list.Display();
+            list.RemoveSpecificNode(new Person(6), new PersonComparer().Compare);
             list.Display();
         }
     }

@@ -4,9 +4,9 @@ namespace Dummy.DoubleLinkedList.Model
     {
         private T? _item;
 
-        private Node<T>? _start;
+        private Node<T>? _next;
 
-        private Node<T>? _end;
+        private Node<T>? _prev;
         public T? Item
         {
             get
@@ -18,42 +18,42 @@ namespace Dummy.DoubleLinkedList.Model
                 _item = value;
             }
         }
-        public Node<T>? Start
+        public Node<T>? Next
         {
             get
             {
-                return _start;
+                return _next;
             }
             set
             {
-                _start = value;
+                _next = value;
             }
         }
 
-        public Node<T>? End
+        public Node<T>? Prev
         {
             get
             {
-                return _end;
+                return _prev;
             }
             set
             {
-                _end = value;
+                _prev = value;
             }
         }
 
         public Node(T item)
         {
             _item = item;
-            _start = null;
-            _end = null;
+            _next = null;
+            _prev = null;
         }
 
         public Node()
         {
             _item = null;
-            _start = null;
-            _end = null;
+            _next = null;
+            _prev = null;
         }
 
     }
